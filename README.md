@@ -6,7 +6,7 @@ A website for the wedding of Adam & Ashley
 
 Make sure you have [Node.js](http://nodejs.org/) installed.
 
-Edit the environment file (.env) with local variables.
+Edit the environment file `./.env.sample` with local variables and rename it to `./.env`.
 
 ```sh
 $ npm install
