@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>AA Wedding RSVP Response</title>
+        <style type="text/css">
+        body {margin: 0; padding: 0; min-width: 100%!important;}
+        .content {width: 100%; max-width: 600px;}  
+        </style>
+    </head>
+    <body yahoo bgcolor="#fff">
+        <table width="100%" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="content" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                                <h1>Wedding RSVP Response</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h2>Guests:</h2></td>
+                        </tr>
+                        <% for (var i = 0; i < guests.length; i++) { %>
+                            <tr><td><strong>Name:</strong></td></tr>
+                            <tr><td style="padding-bottom: 5px;"><%= guests[i].name %></td></tr>
+                            <tr><td><strong>Email:</strong></td></tr>
+                            <tr><td style="padding-bottom: 5px;"><%= guests[i].email %></td></tr>
+                            <tr><td><strong>Dietary Requirements:</strong></td></tr>
+                            <tr><td style="padding-bottom: 5px;"><%= guests[i].dietary %></td></tr>
+                            <tr><td><strong>Allergy:</strong></td></tr>
+                            <tr><td style="padding-bottom: 20px;"><%= guests[i].allergy %></td></tr>
+                        <% } %>
+                        <tr>
+                            <td>
+                                <h2>Song Requests:</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= songRequests %>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

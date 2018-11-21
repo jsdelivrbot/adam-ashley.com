@@ -1,0 +1,57 @@
+<!-- Contact Section -->
+<section id="contact" class="bgcolor">
+    <header class="section-header">
+        <h3 class="section-title">SIGN YOUR RSVP</h3>
+        <p class="section-tagline">Please RSVP before September 5th, 2018.</p>
+    </header>
+    <div class="form">
+        <div class="container smaller">
+            <div class="row">
+                <form action="rsvp"  method="POST" autocomplete="off" class="rsvpForm">
+                    <div class="notification"></div>
+                    <div class="guests">
+                        <div class="guest guest-1">
+                            <h3>Guest 1</h3>
+                            <div class="row">
+                                <div class="column six">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Guest Name" required />
+                                </div>
+                                <div class="column six">
+                                    <label for="email">Email</label>
+                                    <input type="text" id="email" name="email" placeholder="email@account.com" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column eight">
+                                    <label for="dietary">Dietary Restrictions</label><br/>
+                                    <div id="dietary-checkboxes">
+                                        <label class="checkbox-inline"><input type="checkbox" name="dietary[1]" value="vegan" /> Vegan</label>
+                                        <label class="checkbox-inline"><input type="checkbox" name="dietary[1]" value="vegetarian" /> Vegetarian</label>
+                                        <label class="checkbox-inline"><input id="allergyCheckbox" type="checkbox" name="dietary[1]" value="allergy" /> Allergy - Please Specify</label>
+                                    </div>
+                                    <br/>
+                                </div>
+                                <div id="allergyContainer" style="display: none;" class="column four">
+                                    <label for="allergy">Allergy</label>
+                                    <input type="text" id="allergy" name="allergy" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="rsvpAddGuest" class="button">Add Guest</a>
+                    <hr />
+                    <div class="column twelve">
+                        <label for="songRequests">Song Requests</label>
+                        <textarea style="min-height:80px;" name="songRequests"></textarea>
+                    </div>
+                    <div class="clearfix"></div>
+                    <input type="hidden" name="submit">
+                    <input type="submit" value="Submit RSVP &rarr;">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #Contact Section -->

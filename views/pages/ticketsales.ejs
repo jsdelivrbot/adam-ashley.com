@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <% include ../partials/header %>
+
+</head>
+
+<body>
+
+    <div class="loaderOverlay"><i class="fa fa-heart animate-spin"></i></div>
+    <!-- Hero Section -->
+    <div id="logo">Ashley <span>&amp;</span> Adam</div>
+    <section id="sales">
+
+        <div class="notification"></div>
+
+        <div class="sales">
+            <div class="row">
+                <div class="column six">
+                    <div class="row">
+                        <div class="column six">
+                            <div class="button-container">
+                                <button onclick="addItem('Entry (Reserved)', 500);">$5 Entry (Reserved)</button>
+                            </div>
+                        </div>
+                        <div class="column six">
+                            <div class="button-container">
+                                <button onclick="addItem('Entry (Door Price)', 1000);">$10 Entry (Door)</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+                    <div class="row">
+                        <div class="column twelve">
+                            <div class="button-container">
+                                <button onclick="addItem('3 Tickets', 500);">3 Tickets for $5</button>
+                            </div>
+                        </div>
+                        <div class="column twelve">
+                            <div class="button-container">
+                                <button onclick="addItem('10 Tickets', 1000);">10 Tickets for $10</button>
+                            </div>
+                        </div>
+                        <div class="column twelve">
+                            <div class="button-container">
+                                <button onclick="addItem('50 Tickets', 4000);">50 Tickets for $40</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+                    <div class="row">
+                        <div class="column twelve">
+                            <div class="button-container">
+                                <button onclick="addItem('1 Refreshment', 100);">1 Refreshment for $1</button>
+                            </div>
+                        </div>
+                        <div class="column twelve">
+                            <div class="button-container">
+                                <button onclick="addItem('5 Refreshments', 500);">5 Refreshments for $5</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+                    <div class="row">
+                        <div class="column twelve">
+                            <div class="button-container">
+                                <button onclick="addItem('10 Toonie Exchange', 2000);">10 Toonies for $20</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column six">
+                    <div class="cart">
+                        <div class="row">
+                            <div class="column seven">
+                                <p><strong>Item</strong></p>
+                            </div>
+                            <div class="column three">
+                                <p><strong>Amount</strong></p>
+                            </div>
+                            <div class="column two">
+                            </div>
+                        </div>
+                        <div id="cartContents">
+                            
+                        </div>
+                        <div class="row">
+                            <hr />
+                            <div class="column six flow-opposite">
+                                <p class="right">Total: <span id="total">$0.00</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button onclick="addItem('Voluntary Surcharge', 0)" id="voluntarySurcharge">Voluntary Surcharge - 2.9% + $0.30</button>
+                    </div>
+                    <div class="button-container">
+                        <button id="checkoutBtn">Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="column four copyright">Copyright &#169; 2018 <a target="_blank" href="http://aocreative.io">AOCreative</a></div>
+                <div class="column four logo">A<span>&</span>A</div>
+                <div class="column four info"></div>
+            </div>
+        </div>
+    </footer>
+    <!-- / Footer Section Ends -->
+    
+    <% include ../partials/footer-scripts %>
+
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+    <script>
+    var amount = 0.00;
+    var x = 0;
+    var items = {};
+
+    var surCharge = 0.029;
+    var surChargeFee = 30;
+    var hasSurcharge = false; 
+
+    var handler = StripeCheckout.configure({
+    key: "<%= publicKey %>",
+    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+    locale: 'auto',
+    token: function(token) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        var data = {
+            token: token.id,
+            email: token.email,
+            amount: calcStripeTotal(),
+            items: JSON.stringify(items)
+        };
+        $.post('/api/p', data, function(response, status) {
+            if (typeof response.type != 'undefined' && typeof response.message != 'undefined') {
+                $('body').find('.notification')
+                    .addClass(response.type + 'msg')
+                    .text(response.message);
+                if (response.type == 'success') {
+                    amount = 0;
+                    x = 0;
+                    items = {};
+                    $('#cartContents').html('');
+                    $('#total').html('$0.00'); 
+                    hasSurcharge = false;
+                }
+            }
+        });
+    }
+    });
+
+    document.getElementById('checkoutBtn').addEventListener('click', function(e) {
+    
+    if (amount > 0) { 
+        // Open Checkout with further options:
+        handler.open({
+            name: 'Adam & Ashley',
+            description: 'Jack & Jill Online Checkout',
+            currency: 'cad',
+            amount: calcStripeTotal(),
+            zipCode: true
+        });
+    }
+    e.preventDefault();
+    });
+
+    // Close Checkout on page navigation:
+    window.addEventListener('popstate', function() {
+    handler.close();
+    });
+
+    function addItem(name, amt) {
+        if ( name === "Voluntary Surcharge" ) {       
+            for (var key in items) {
+                if (items[key].name === "Voluntary Surcharge") {
+                    hasSurcharge = true;
+                }
+            }
+            if (!hasSurcharge) {
+                hasSurcharge = true;
+                items[x] = {
+                    name: name,
+                    amount: calcSurCharge()
+                };
+
+                x++;
+            }
+        } else {
+            amount += amt;
+            items[x] = {
+                name: name,
+                amount: amt
+            };
+            
+            x++;
+        }
+
+        updateSurCharge();
+        refreshCart();
+    }
+
+    function delItem(id) {
+        if ( items[id].name === "Voluntary Surcharge" ) {
+            hasSurcharge = false;
+        } else {
+            amount -= items[id].amount;
+        }
+        $('#cartContents #' + id).remove();
+        $('#total').html('$'+calcTotal());
+        delete items[id]
+    }
+
+    function calcTotal() {
+        var amt;
+        if (hasSurcharge) {
+            amt = (amount + surChargeFee) / (1.0 - surCharge);
+        } else {
+            amt = amount;
+        }
+        return parseFloat(Math.round(amt*100) / 10000).toFixed(2);
+    }
+
+    function calcStripeTotal() {
+        return calcTotal() * 100;
+    }
+
+    function calcSurCharge() {
+        return  calcStripeTotal() - amount;
+    }
+
+    function updateSurCharge() {
+        for (var key in items) {
+            if (items[key].name === "Voluntary Surcharge") {
+                items[key].amount = calcSurCharge();
+            }
+        }
+    }
+
+    function roundAmount(x) {
+        return parseFloat(Math.round(x*100) / 10000).toFixed(2);
+    }
+
+    function refreshCart() {
+        $('#cartContents').html('');
+        $('#total').html('$0.00');
+        for (var key in items) {
+            $('#cartContents').append('<div id="'+key+'" class="row"><div class="column seven"><p>'+items[key].name+'</p></div><div class="column three"><p>$'+roundAmount(items[key].amount)+'</p></div><div class="column two"><p><a href="#" onClick="delItem('+key+')">X</a></p></div></div>');
+        }
+
+        $('#total').html('$'+calcTotal());
+    }
+
+    </script>
+
+</body>
+</html>

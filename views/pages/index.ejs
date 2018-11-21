@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <% include ../partials/header %>
+
+</head>
+
+<body>
+
+    <div class="loaderOverlay"><i class="fa fa-heart animate-spin"></i></div>
+    <!-- Hero Section -->
+    <div id="logo">Ashley <span>&amp;</span> Adam</div>
+    <section id="top" class="hero" data-type="parallax">
+        
+        <% include ../partials/navigation %>
+
+        <div class="overlay-dark"></div>
+        <div class="container">
+            <div class="hero-inner">
+                <h1>We’re getting married.</h1>
+                <div class="info">
+                   <div id="countdown"> 94 <span>days</span> 18 <span>hours</span> 46 <span>mins</span> 34 <span>secs</span></div> 
+                    <span class="date">on October 5th 2018, Hamilton, ON</span>
+                </div>
+                <a href="#couple" class="mouse scrollTo"><i class="fa fa-long-arrow-down"></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- #Hero Section Ends -->
+
+    <section id="home-content" class="top-menu">
+
+        <!-- RSVP Now -->
+        <section id="invitation" class="pattern">
+                <span>Have you been invited to our wedding?</span>
+                <span>Our wedding date and time have changed.</span>
+                <span>Please RSVP again for the new date.</span>
+          <a id="to-rsvp" href="#contact" class="button scrollTo">RSVP NOW</a>
+        </section>
+        <!-- #RSVP Now -->
+
+        <% include ../partials/wedding-story %>
+        
+        <!-- Parallax Section -->
+        <section class="parallax" data-type="parallax">
+            <div class="overlay"></div>
+            <div class="container">
+                <h2 class="quote">“After getting lost on that first night trying to find a Wendy's, we ended up talking the night away on a park bench in Bayfront Park.”</h2>
+            </div>
+        </section>
+        <!-- #Parallax Section Ends -->
+
+        <% include ../partials/wedding-details %>
+
+        <% include ../partials/wedding-party %>
+
+        <% include ../partials/wedding-registry %>
+
+        <% include ../partials/wedding-accomodations %>
+
+        <% include ../partials/wedding-rsvp %>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="column four copyright">Copyright &#169; 2018 <a target="_blank" href="http://aocreative.io">AOCreative</a></div>
+                    <div class="column four logo">A<span>&</span>A</div>
+                    <div class="column four info"></div>
+                </div>
+            </div>
+        </footer>
+        <!-- / Footer Section Ends -->
+    </section>
+    
+    <% include ../partials/footer-scripts %>
+
+</body>
+
+</html>

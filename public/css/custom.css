@@ -1,0 +1,173 @@
+.hero {
+    background-image: url(../img/engagement/Photo-194.jpg);
+}
+
+
+#couple .bannerimg {
+    background-image: url(../img/engagement/Photo-208.jpg);
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 380px;
+}
+
+.parallax.v2 {
+    background-image: url(../img/engagement/Photo-75.jpg);
+}
+
+.parallax.v3 {
+    background-image: url(../img/engagement/Photo-36.jpg);
+}
+
+.guest {
+    position: relative;
+}
+
+a.remove-guest {
+    position: absolute;
+    right: 0px;
+}
+
+.login {
+    max-width: 600px;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+.login h2 {
+    color: #fff;
+}
+
+.login h3 {
+    color: #fff;
+}
+
+@media (max-width: 668px) {
+    .login {
+        margin-top: 50px;
+        width: 90%;
+    }
+}
+
+section#sales {
+    padding: 10px 0px 50px 0px;
+}
+
+section#sales:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: url(../img/bg/groom-bride-hands.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.sales {
+    max-width: 1000px;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.sales button {
+    padding: 10px;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.sales a {
+    color: #fff;
+}
+
+.sales .cart {
+    background: rgba(0,0,0,0.5);
+    padding: 20px 50px;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button-container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.section-tagline {
+    margin-bottom: 40px;
+}
+
+#accomodations h3.section-title:before {
+    content: "\e001";
+    top: -60px;
+    font-size: 40px;
+    margin-left: -20px;
+}
+
+#accomodations .container {
+    text-align: center;
+}
+
+#accomodations .container img {
+    width: 200px;
+    margin-left: 10px;
+}
+
+#accomodations .container .column.left {
+    padding-left: 40px;
+}
+
+#accomodations .container .column.right {
+    padding-right: 40px;
+}
+
+@media (max-width: 668px) {
+    .hero .info .date {
+        bottom: 140px;
+    }
+    .hero-inner .mouse {
+        bottom: 80px;
+    }
+}  
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+ .StripeElement {
+    background-color: white;
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+  }
+  
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+  }
+  
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+  
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+  

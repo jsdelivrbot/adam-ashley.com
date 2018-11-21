@@ -1,0 +1,16 @@
+**Jack and Jill Online Payment Receipt
+--------------------------------------------------------
+
+**Below are the details of the recent transacrion:
+--------------------------------------------------------
+Custumer:
+<%= customer.email %>
+
+<% for (var key in items) { %>
+Name:
+ - <%= items[key].name %>
+Amount:
+ - <%= items[key].amount %>
+ 
+<% } %>
+

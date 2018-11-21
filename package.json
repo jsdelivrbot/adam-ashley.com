@@ -1,0 +1,39 @@
+{
+  "name": "adam-ashley",
+  "version": "0.0.1",
+  "description": "Adam & Ashleys Wedding Website",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "client-sessions": "^0.8.0",
+    "dotenv": "^6.1.0",
+    "ejs": "^2.5.6",
+    "email-templates-v2": "^2.0.3",
+    "express": "^4.15.2",
+    "jquery-parallax": "^1.0.1",
+    "jquery.scrollto": "^2.1.2",
+    "nodemailer": "^4.6.2",
+    "stripe": "^5.8.0"
+  },
+  "devDependencies": {
+    "request": "^2.88.0",
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}

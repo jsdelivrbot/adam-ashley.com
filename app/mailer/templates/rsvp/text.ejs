@@ -1,0 +1,17 @@
+**Wedding RSVP Response
+--------------------------------------------------------
+
+**The following guests have submitted their RSVP:
+--------------------------------------------------------
+<% for (var i = 0; i < guests.length; i++) { %>
+Name:
+ - <%= guests[i].name %>
+Email:
+ - <%= guests[i].email %>
+Dietary Requirements:
+ - <%= guests[i].dietary %>
+Allergies:
+ - <%= guests[i].allergy %>
+ 
+<% } %>
+

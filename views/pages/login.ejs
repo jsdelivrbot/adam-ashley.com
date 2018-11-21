@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <% include ../partials/header %>
+
+</head>
+
+<body>
+
+    <div class="loaderOverlay"><i class="fa fa-heart animate-spin"></i></div>
+    <!-- Hero Section -->
+    <div id="logo">Ashley <span>&amp;</span> Adam</div>
+    <section id="top" class="hero" data-type="parallax">
+
+        <div class="login">
+            <h2>SCAVENGER HUNT TIME!</h2>
+            <h3>Find the access code in your invitation.</h3>
+            <% if( typeof error != "undefined" ) { %><div class="errormsg"><%= error %></div><% } %>
+            <div class="row">
+                <div class="column twelve">
+                    <form id="loginForm" class="form" action="login" method="POST">
+                        <input name="accessCode" type="text" value="" placeholder="Access Code" />
+                        <input type="submit" value="I FOUND IT!" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- #Hero Section Ends -->
+    
+    <% include ../partials/footer-scripts %>
+
+</body>
+
+</html>
